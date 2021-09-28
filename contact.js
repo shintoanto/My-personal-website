@@ -64,7 +64,10 @@ function mailValidation() {
         $('#emailError').html("Filed is required")
         msgErr = false;
     } else if (emailInput.match(letters)) {
-        $('#emailError').html("")
+        $('#emailError').html("enter valid symbols")
+        msgErr = true;
+    } else if (emailInput == " ") {
+        $('#emailError').html("Not input spaces")
         msgErr = true;
     } else {
         $('#emailError').html("Invalid Entry")
@@ -75,7 +78,6 @@ function mailValidation() {
 
 function messageValidation() {
     var messageInput = $('#messaege').val()
-
     if (messageInput == "") {
         $('#messageError').html("Field is required")
         mailError = false;
@@ -86,7 +88,7 @@ function messageValidation() {
         $('#messageError').html("200 characters maximum")
         mailError = false;
     } else {
-        $('#messageError').html("")
+        $('#messageError').html(" ")
         mailError = true;
     }
 
@@ -100,16 +102,8 @@ $('.navbar-collapse a').click(function() {
 
 
 $("#submit-form").submit((e) => {
-
     e.preventDefault()
-    console.log(msgErr);
-    console.log(nameErr)
-    console.log(mailError)
-    console.log(mob)
     if (msgErr == true && nameErr == true && mailError == true && mob == true) {
-
-
-
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbzcjZiJgpoeFM0oh0u8LdxJ_HYggiwKCy-55q_ZgXIHYj3hQCZ7e-Gt4INBxITnrG5P/exec",
             data: $("#submit-form").serialize(),
@@ -117,7 +111,7 @@ $("#submit-form").submit((e) => {
             success: function(response) {
                 alert("Form submitted successfully")
                 window.location.reload()
-                window.location.href = "https://google.com"
+                    // window.location.href = "https://google.com"
             },
             error: function(err) {
                 alert("Something Error")
@@ -125,11 +119,10 @@ $("#submit-form").submit((e) => {
             }
         })
     } else {
-        console.log('jfsdjk')
+
         validatingFirstName()
         phoneValidation()
         mailValidation()
         messageValidation()
-
     }
 })
