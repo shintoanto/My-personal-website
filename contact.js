@@ -31,15 +31,13 @@ function phoneValidation() {
     if (numberInput == "") {
         $('#mobileError').html("Field is required")
         mob = false
-    } else if (numberInput.match(letters) && (numberInput.length == 10)) {
-        console.log("jndf")
+    } else if (numberInput.match(avoidSymbols) && (numberInput.length == 10)) {
         $("#mobileError").html("")
         mob = true
     } else if (numberInput.length < 10) {
-        if (numberInput.match(letters)) {
+        if (numberInput.match(avoidSymbols)) {
             $("#mobileError").html("Type ten numbers")
             mob = false;
-
         } else {
             $("#mobileError").html("Use only numbers")
             mob = false;
@@ -80,16 +78,16 @@ function messageValidation() {
 
     if (messageInput == "") {
         $('#messageError').html("Field is required")
-        msgErr = false;
+        mailError = false;
     } else if (messageInput.length < 10) {
         $('#messageError').html("Enter minimum 10 characters")
-        msgErr = false;
+        mailError = false;
     } else if (messageInput.length > 150) {
         $('#messageError').html("200 characters maximum")
-        msgErr = false;
+        mailError = false;
     } else {
         $('#messageError').html("")
-        msgErr = true;
+        mailError = true;
     }
 
 }
@@ -102,8 +100,14 @@ $('.navbar-collapse a').click(function() {
 
 
 $("#submit-form").submit((e) => {
+
     e.preventDefault()
+    console.log(msgErr);
+    console.log(nameErr)
+    console.log(mailError)
+    console.log(mob)
     if (msgErr == true && nameErr == true && mailError == true && mob == true) {
+
 
 
         $.ajax({
@@ -113,7 +117,7 @@ $("#submit-form").submit((e) => {
             success: function(response) {
                 alert("Form submitted successfully")
                 window.location.reload()
-                    //window.location.href="https://google.com"
+                window.location.href = "https://google.com"
             },
             error: function(err) {
                 alert("Something Error")
@@ -121,10 +125,11 @@ $("#submit-form").submit((e) => {
             }
         })
     } else {
-        nameValidation()
+        console.log('jfsdjk')
+        validatingFirstName()
         phoneValidation()
-        emailValidation()
-        commentValidation()
+        mailValidation()
+        messageValidation()
 
     }
 })

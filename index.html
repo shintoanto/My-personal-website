@@ -24,10 +24,12 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 </head>
 
@@ -646,7 +648,7 @@
                 </div>
             </div>
             <!--forms/contact.php-->
-            <form id="submit-form" action="" method="POST" role="form" class="php-email-form mt-4">
+            <form id="submit-form" role="form" class="php-email-form mt-4">
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <input type="text" oninput="this.value=this.value.replace(/[^A-Za-z,.;'&/.() ]|^ /g,'')" onkeyup="validatingFirstName()" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -718,6 +720,31 @@
 
                 }
             })
+        })
+    </script> -->
+    <!-- <script>
+        $("#submit-form").submit((e) => {
+            e.preventDefault()
+            if (msgErr == true && nameErr == true && mailError == true && mob == true) {
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbzcjZiJgpoeFM0oh0u8LdxJ_HYggiwKCy-55q_ZgXIHYj3hQCZ7e-Gt4INBxITnrG5P/exec",
+                    data: $("#submit-form").serialize(),
+                    method: "post",
+                    success: function(response) {
+                        alert("Form submitted successfully")
+                        window.location.reload()
+                            //window.location.href="https://google.com"
+                    },
+                    error: function(err) {
+                        alert("Something Error")
+                    }
+                })
+            } else {
+                nameValidation()
+                phoneValidation()
+                emailValidation()
+                commentValidation()
+            }
         })
     </script> -->
 
