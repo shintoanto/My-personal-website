@@ -1125,7 +1125,8 @@ section .container {
     background: rgb(59, 56, 56);
     border: 0;
     transition: 0.3s;
-    color: rgb(68, 66, 66);
+    /* color: rgb(68, 66, 66); */
+    color: rgb(247 247 247);
 }
 
 .contact .php-email-form input:focus,
